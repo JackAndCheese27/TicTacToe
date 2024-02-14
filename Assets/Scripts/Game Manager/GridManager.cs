@@ -9,7 +9,7 @@ public class GridManager : MonoBehaviour
     public SquareStateManager[] gridSquares = new SquareStateManager[9];
 
     
-    [SerializeField] private SquareState[] squareStates = new SquareState[9];
+    [SerializeField] public SquareState[] squareStates = new SquareState[9];
 
     public void Start()
     {
@@ -23,5 +23,15 @@ public class GridManager : MonoBehaviour
         {
             squareStates[i] = gridSquares[i].currentSquareState;
         }
+    }
+
+    public void ResetGrid()
+    {
+        foreach (var square in gridSquares)
+        {
+            square.currentSquareState = SquareState.Empty;
+        }
+        
+        UpdateSquareStates();
     }
 }
